@@ -2,14 +2,15 @@
 ;;
 
 ;; Set load paths
-(setq init-dir (file-name-directory (buffer-file-name)))
+(setq init-dir (file-name-directory (or load-file-name (buffer-file-name))))
+
 (add-to-list 'load-path init-dir)
 (add-to-list 'load-path (concat init-dir "/emacs-starter-kit"))
 (add-to-list 'load-path (concat init-dir "/vendor"))
 
 (require 'better-defaults)
 
-;; M-x enhancement for Emacs 
+;; M-x enhancement for Emacs
 (require 'smex)
 (smex-initialize)
 

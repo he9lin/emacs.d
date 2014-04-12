@@ -32,9 +32,9 @@
                                   face indentation space-after-tab)
       whitespace-line-column 100
       ediff-window-setup-function 'ediff-setup-windows-plain
-      oddmuse-directory (concat dotfiles-dir "oddmuse")
+      oddmuse-directory (concat init-dir "oddmuse")
       xterm-mouse-mode t
-      save-place-file (concat dotfiles-dir "places"))
+      save-place-file (concat init-dir "places"))
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
@@ -93,7 +93,7 @@
 
 ;; Don't clutter up directories with files~
 (setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat dotfiles-dir "backups")))))
+                                        (concat init-dir "backups")))))
 
 ;; nxhtml stuff
 (setq mumamo-chunk-coloring 'submode-colored
