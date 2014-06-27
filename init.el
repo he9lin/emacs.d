@@ -24,23 +24,33 @@
 (require 'starter-kit-bindings)
 (require 'starter-kit-misc)
 (require 'starter-kit-eshell)
-(require 'starter-kit-lisp)
+;; (require 'starter-kit-lisp)
 (require 'starter-kit-perl)
 (require 'starter-kit-ruby)
 (require 'starter-kit-js)
 
 (require 'package)
+
 (add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+ '("marmalade" .
+   "http://marmalade-repo.org/packages/"))
+
+(add-to-list 'package-archives
+ '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 (package-initialize)
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 (unless (package-installed-p 'clojure-mode)
-  (package-refresh-contents)
   (package-install 'clojure-mode))
 
+(unless (package-installed-p 'cider)
+  (package-install 'cider))
+
 ;; Default fonts
-(set-face-attribute 'default nil :font "Monaco-14")
+(set-face-attribute 'default nil :font "Ubuntu Mono-15")
 
 ;; Default window size
 (add-to-list 'default-frame-alist '(height . 50))
@@ -60,6 +70,6 @@
 (require 'paredit)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH"))) 
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
